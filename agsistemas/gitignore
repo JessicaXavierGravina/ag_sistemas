@@ -1,0 +1,48 @@
+# Arquivos de sistema operacional
+.DS_Store
+Thumbs.db
+
+# Ambientes virtuais
+venv/
+env/
+*.env
+
+# Cache e arquivos compilados
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pyz
+*.pywz
+*.pyzw
+*.pyz*
+*.swp
+*.swo
+*.swn
+
+# Arquivos de log
+*.log
+
+# Arquivos temporários
+*.tmp
+*.bak
+*.cache
+
+# Diretórios de dados
+db.sqlite3
+db.sqlite3-journal
+media/
+static/
+
+# Dependências geradas
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Configurações de IDE
+.vscode/
+.idea/
+*.sublime-workspace
+
+# Outros
+*.bak
+*.sql

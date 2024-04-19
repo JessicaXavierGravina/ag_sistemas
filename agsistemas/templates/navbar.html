@@ -1,0 +1,30 @@
+{% load static %}
+
+<nav class="w-full flex justify-between items-center py-1 px-12 fixed z-50">
+    <div class="w-2/12">
+        <a href="/">
+            <img class="w-2/12 ml-12" src="{% static 'images/logo-ag.jpg' %}">
+        </a>
+    </div>
+
+    <div class="w-6/12 mr-12 flex flex-nowrap justify-end">
+
+        <div class="mr-2">
+            <button class="bg-[#1EBABD] text-[#581D74] py-1 px-3 rounded-md">
+                <a href="{% url 'criar_veiculo' %}">Adicionar Veículo</a>
+            </button>
+        </div>
+
+        <div class="mr-2">
+            <button class="bg-[#1EBABD] text-[#581D74] py-1 px-3 rounded-md">
+                <a href="{% url 'criar_motorista' %}">Adicionar Motorista</a>
+            </button>
+        </div>
+                <div class="mr-2">
+            <button class="bg-[#1EBABD] text-[#581D74] py-1 px-3 rounded-md">
+                <a href="{% url 'controle_create' %}">Adicionar Controle</a>
+            </button>
+        </div>
+
+    </div>
+</nav>

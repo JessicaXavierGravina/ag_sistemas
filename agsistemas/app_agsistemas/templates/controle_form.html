@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {% if form.instance.pk %}
+        Editar Controle de Veículo
+    {% else %}
+        Adicionar Controle de Veículo
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+
+    <style>
+        .custom-h1 {
+            font-size: 2rem;
+        }
+
+        .custom-label {
+            font-size: 1.1rem;
+        }
+
+    </style>
+    <div class="container pt-5">
+        <h1 class="text-center custom-h1 pt-8 mt-4 ml-12">{% if form.instance.pk %}Editar Controle de Veículo{% else %}Controle de Veículo{% endif %}</h1>
+
+        <form method="post" class="row">
+        {% csrf_token %}
+            <div class="col-md-6 offset-md-3">
+            {% if form.non_field_errors %}
+            <div class="alert alert-danger mt-1 text-center" role="alert">
+                <ul>
+                    {% for error in form.non_field_errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+
+    <div class="mt-1 mb-3">
+    <label for="id_veiculo" class="col-md-2 col-form-label">Placa</label>
+    <select name="veiculo" id="id_veiculo" class="form-select">
+        {% for veiculo in form.veiculo.field.queryset %}
+            <option value="{{ veiculo.pk }}">{{ veiculo.nome }} - {{ veiculo.placa }}</option>
+        {% endfor %}
+
+                {% if form.errors.veiculo %}
+                    {% for error in form.errors.veiculo %}
+                        <div class="invalid-feedback d-block">{{ error }}</div>
+                    {% endfor %}
+                {% endif %}
+    </select>
+</div>
+
+            <div class="mb-3">
+                <label for="id_motorista" class="form-label">Motorista</label>
+                    <select name="motorista" id="id_motorista" class="form-select">
+
+        {% for motorista in form.motorista.field.queryset %}
+            <option value="{{ motorista.pk }}">{{ motorista.nome }}</option>
+        {% endfor %}
+                {% if form.errors.motorista %}
+                    {% for error in form.errors.motorista %}
+                        <div class="invalid-feedback d-block">{{ error }}</div>
+                    {% endfor %}
+                {% endif %}
+
+    </select>
+</div>
+
+            <div class="mb-3">
+                <label for="id_data_saida" class="form-label mr-4">Data de Saída</label>
+                {{ form.data_saida }}
+            </div>
+
+            <div class="mb-3">
+                <label for="id_hora_saida" class="form-label mr-4">Hora de Saída</label>
+                {{ form.hora_saida }}
+            </div>
+
+            <div class="mb-3">
+                <label for="id_km_saida" class="form-label mr-4">Km de Saída</label>
+                {{ form.km_saida }}
+            </div>
+
+            <div class="mb-3">
+                <label for="id_destino" class="form-label mr-4">Destino</label>
+                {{ form.destino }}
+            </div>
+
+            <div class="mb-3">
+                <label for="id_data_retorno" class="form-label mr-4">Data de Retorno</label>
+                {{ form.data_retorno }}
+            </div>
+
+            <div class="mb-3">
+                <label for="id_hora_retorno" class="form-label mr-4">Hora de Retorno</label>
+                {{ form.hora_retorno }}
+            </div>
+
+            <div class="mb-3">
+                <label for="id_km_retorno" class="form-label mr-4">Km de Retorno</label>
+                {{ form.km_retorno }}
+            </div>
+
+            <a href="{% url 'controle_list' %}" class="btn btn-secondary ml-7">Cancelar</a>
+            <button type="submit" class="btn btn-primary ml-8">Salvar</button>
+
+        </form>
+    </div>
+{% endblock %}

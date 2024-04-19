@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Detalhes do Controle
+{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h1>Detalhes do Controle</h1>
+        <p>Data de Saída: {{ controle.data_saida }}</p>
+        <p>Hora de Saída: {{ controle.hora_saida }}</p>
+        <p>KM de Saída: {{ controle.km_saida }}</p>
+        <p>Destino: {{ controle.destino }}</p>
+        <p>Data de Retorno: {{ controle.data_retorno }}</p>
+        <p>Hora de Retorno: {{ controle.hora_retorno }}</p>
+        <p>KM de Retorno: {{ controle.km_retorno }}</p>
+        <p>KM Percorrido: {{ controle.km_percorrido }}</p>
+    </div>
+{% endblock %}

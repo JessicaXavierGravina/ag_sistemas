@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Veículos
+{% endblock %}
+
+{% block content %}
+    <style>
+        .custom-h1 {
+            font-size: 2rem;
+        }
+
+        .custom-label {
+            font-size: 1.1rem;
+        }
+    </style>
+<div class="container mt-5 pt-5">
+    <h1 class="text-center custom-h1 pt-12 mt-12 ml-12">Lista de Veículos</h1>
+
+        <a href="{% url 'criar_veiculo' %}"  class="btn btn-primary ml-6 mt-5">Adicionar Veículo</a>
+
+        <div class="table-responsive p-6">
+            <table class="table table-striped table-bordered text-white bg-dark">
+                <thead>
+                    <tr>
+                        <th scope="col" style="width: 20%;">Placa</th>
+                        <th scope="col"  style="width: 20%;">Marca</th>
+                        <th scope="col" style="width: 20%;">Modelo</th>
+                        <th scope="col" style="width: 20%;">Km para Troca de Óleo</th>
+                        <th scope="col" style="width: 20%;">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for veiculo in veiculos %}
+                    <tr>
+                        <td class="text-light pt-3">{{ veiculo.placa }}</td>
+                        <td class="text-light pt-3">{{ veiculo.marca }}</td>
+                        <td class="text-light pt-3">{{ veiculo.modelo }}</td>
+                        <td class="text-light pt-3">{{ veiculo.km_troca_oleo }}</td>
+                        <td>
+                            <a href="{% url 'veiculo_detail' veiculo.pk %}" class="btn btn-primary ml-2">Visualizar</a>
+                            <a href="{% url 'editar_veiculo' veiculo.id %}" class="btn btn-warning ml-3">Editar</a>
+                            <form id="delete-form-{{ veiculo.id }}" action="{% url 'excluir_veiculo' veiculo.id %}" method="post" style="display: inline;">
+                                {% csrf_token %}
+                                <button type="button" class="btn btn-danger ml-3" onclick="confirmDelete('{{ veiculo.id }}')">Excluir</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        function confirmDelete(id) {
+            if (confirm("Tem certeza que deseja excluir este veículo?")) {
+                document.getElementById('delete-form-' + id).submit();
+            }
+        }
+    </script>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Confirmar Exclusão do Controle de Veículo
+{% endblock %}
+
+{% block content %}
+
+<style>
+    .custom-h1 {
+        font-size: 2rem;
+    }
+
+    .custom-label {
+        font-size: 1.1rem;
+    }
+
+    /* Adicionando margem superior para os botões */
+    .btn {
+        margin-top: 20px;
+    }
+</style>
+
+<div class="container mt-5 pt-5">
+    <h1 class="text-center custom-h1 pt-12 mt-12 ml-12"> Confirmar Exclusão do Controle de Veículo</h1>
+    <p class="text-center custom-label mt-5 ml-8">Você está prestes a excluir o registro de controle de veículo. Tem certeza que deseja continuar?</p>
+    <form method="post" class="text-center">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger custom-label">Confirmar</button>
+        <a href="{% url 'controle_list' %}" class="btn btn-primary custom-label ml-12">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

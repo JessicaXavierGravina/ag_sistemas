@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Página Inicial
+{% endblock %}
+
+{% block content %}
+    <div class="container mt-4 pt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-5 mt-12 pt-12">
+                <h1 class="text-center mb-4">Bem-vindo à Página Inicial</h1>
+                <ol class="list-group list-group-numbered">
+                    <a href="{% url 'veiculos' %}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                        Veículos
+                        <span class="badge bg-primary me-3">{{ veiculos_count }}</span>
+                    </a>
+                    <a href="{% url 'motoristas' %}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                        Motoristas
+                        <span class="badge bg-primary me-3">{{ motoristas_count }}</span>
+                    </a>
+                    <a href="{% url 'controle_list' %}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                        Controle
+                    </a>
+
+                </ol>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Editar Veículo
+{% endblock %}
+
+{% block content %}
+ <style>
+        .custom-h1 {
+            font-size: 2rem;
+        }
+
+        .custom-label {
+            font-size: 1.1rem;
+        }
+
+    </style>
+
+
+     <div class="container mt-5 pt-5">
+    <h1 class="text-center custom-h1 pt-12 mt-12 ml-12">Editar Veículo</h1>
+        {% if form.non_field_errors %}
+            <div class="alert alert-danger" role="alert">
+                <ul>
+                    {% for error in form.non_field_errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="container">
+        <form method="post" class="row">
+            {% csrf_token %}
+            <div class="col-md-6 offset-md-3">
+                <div class="row mb-3 align-items-center mt-4">
+                    <label for="id_placa" class="col-md-6 col-form-label text-md-end custom-label">Placa</label>
+                    <div class="col-md-6">
+                        {{ form.placa }}
+                        {% if form.placa.errors %}
+                            <div class="alert alert-danger" role="alert">
+                                <ul>
+                                    {% for error in form.placa.errors %}
+                                        <li>{{ error }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="row mb-3 align-items-center">
+                    <label for="id_marca" class="col-md-6 col-form-label text-md-end custom-label">Marca</label>
+                    <div class="col-md-6">
+                        {{ form.marca }}
+                    </div>
+                </div>
+                <div class="row mb-3 align-items-center">
+                    <label for="id_modelo" class="col-md-6 col-form-label text-md-end custom-label">Modelo</label>
+                    <div class="col-md-6">
+                        {{ form.modelo }}
+                    </div>
+                </div>
+                <div class="row mb-3 align-items-center">
+                    <label for="id_km_troca_oleo" class="col-md-6 col-form-label text-md-end custom-label">Km para Troca de Óleo</label>
+                    <div class="col-md-6">
+                        {{ form.km_troca_oleo }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}

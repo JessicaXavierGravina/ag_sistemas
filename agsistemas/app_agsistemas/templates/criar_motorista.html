@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Adicionar Motorista
+{% endblock %}
+
+{% block content %}
+    <style>
+        .custom-h1 {
+            font-size: 2rem;
+        }
+
+        .custom-label {
+            font-size: 1.1rem;
+        }
+
+    </style>
+
+
+    <div class="container mt-5 pt-5">
+    <h1 class="text-center custom-h1 pt-12 mt-12 ml-12">Adicionar Motorista</h1>
+    <form method="post" class="row">
+        {% csrf_token %}
+        <div class="col-md-6 offset-md-3">
+            {% if form.non_field_errors %}
+            <div class="alert alert-danger mt-4 text-center" role="alert">
+                <ul>
+                    {% for error in form.non_field_errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+
+            <div class="row mt-8 mb-6 text-center align-items-center">
+                <label for="id_nome" class="col-md-6 col-form-label text-md-end custom-label">Nome completo</label>
+                <div class="col-md-1">
+                    {{ form.nome }}
+                </div>
+            </div>
+            <div class="row mb-6 text-center align-items-center">
+                <label for="id_telefone" class="col-md-6 col-form-label text-md-end custom-label">Telefone / Celular</label>
+                <div class="col-md-1">
+                    {{ form.telefone }}
+                </div>
+            </div>
+            <div class="row mb-6 text-center align-items-center">
+                <label for="id_cnh" class="col-md-6 col-form-label text-md-end custom-label">CNH</label>
+                <div class="col-md-1">
+                    {{ form.cnh }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <button type="submit" class="btn btn-primary">Adicionar Motorista</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Detalhes do Motorista
+{% endblock %}
+
+{% block content %}
+    <div class="container mt-5 pt-3">
+        <h1 class="text-center custom-h1 pt-12 mt-12 ml-12">Detalhes do Motorista</h1>
+        <dl class="row">
+            <div class="table-responsive p-3 ml-9 ">
+                <dt class="col-sm-3 mt-2">Nome:</dt>
+                <dd class="col-sm-9">{{ motorista.nome }}</dd>
+
+                <dt class="col-sm-3 mt-2">Telefone:</dt>
+                <dd class="col-sm-9">{{ motorista.telefone }}</dd>
+
+                <dt class="col-sm-3 mt-2">CNH:</dt>
+                <dd class="col-sm-9">{{ motorista.cnh }}</dd>
+
+                {% if controles %}
+                    <dt class="col-sm-3 mt-2">Veículos Associados:</dt>
+                    <dd class="col-sm-9 mt-2">
+                        <ul>
+                            {% for controle in controles %}
+                            <li class="mt-2"><strong>{{ controle.veiculo }}</strong> - Data de Saída: {{ controle.data_saida }} - Data de Retorno: {{ controle.data_retorno }}</li>
+                            {% endfor %}
+                        </ul>
+                    </dd>
+                {% endif %}
+            </div>
+        </dl>
+        <a href="{% url 'motoristas' %}" class="btn btn-primary ml-9">Voltar</a>
+    </div>
+{% endblock %}

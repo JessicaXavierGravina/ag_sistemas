@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Adicionar Veiculo
+{% endblock %}
+
+{% block content %}
+    <style>
+        .custom-h1 {
+            font-size: 2rem;
+        }
+
+        .custom-label {
+            font-size: 1.1rem;
+        }
+
+    </style>
+
+
+    <div class="container mt-5 pt-5">
+    <h1 class="text-center custom-h1 pt-12 mt-12 ml-12">Adicionar Veiculo</h1>
+    <form method="post" class="row">
+        {% csrf_token %}
+        <div class="col-md-6 offset-md-3">
+            {% if form.non_field_errors %}
+            <div class="alert alert-danger mt-4 text-center" role="alert">
+                <ul>
+                    {% for error in form.non_field_errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+
+            <div class="row mt-8 mb-6 text-center align-items-center">
+                <label for="id_placa" class="col-md-6 col-form-label text-md-end custom-label">Placa</label>
+                <div class="col-md-1">
+                    {{ form.placa }}
+                </div>
+            </div>
+            <div class="row mb-6 text-center align-items-center">
+                <label for="id_marca" class="col-md-6 col-form-label text-md-end custom-label">Marca</label>
+                <div class="col-md-1">
+                    {{ form.marca }}
+                </div>
+            </div>
+            <div class="row mb-6 text-center align-items-center">
+                <label for="id_modelo" class="col-md-6 col-form-label text-md-end custom-label">Modelo</label>
+                <div class="col-md-1">
+                    {{ form.modelo }}
+                </div>
+            </div>
+            <div class="row mb-6 text-center align-items-center">
+                <label for="id_km_troca_oleo" class="col-md-6 col-form-label text-md-end custom-label">Km para Troca de Óleo</label>
+                <div class="col-md-1">
+                    {{ form.km_troca_oleo }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <button type="submit" class="btn btn-primary">Adicionar Veiculo</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
